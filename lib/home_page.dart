@@ -12,6 +12,9 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
 
   bool _secureText = true;
+  TextEditingController _passwordController = TextEditingController();
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -58,11 +61,16 @@ class _HomePageState extends State<HomePage> {
             ),
             
           TextField(
+          controller: _passwordController,
             decoration: InputDecoration(
               hintText: "Password",
             labelText: "Password",
             border: OutlineInputBorder(),
-          
+
+            // errorText: null, 
+            
+
+
             suffixIcon: IconButton(onPressed: (){
               setState(() {
                 _secureText = !_secureText;
@@ -75,6 +83,12 @@ class _HomePageState extends State<HomePage> {
 
             obscureText: _secureText,
           ),
+
+          ElevatedButton(onPressed: (){
+            print(_passwordController.text);
+
+          },
+          child: Text("Click here"),),
         ],
         mainAxisAlignment: MainAxisAlignment.center,
       ),
